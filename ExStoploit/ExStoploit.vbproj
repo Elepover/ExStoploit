@@ -53,6 +53,7 @@
       <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\MahApps.Metro.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -125,8 +126,8 @@
     </Compile>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -137,6 +138,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\ic_delete_forever_black_18dp_2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\ic_storage_black_18dp_2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\ic_autorenew_black_36dp_2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\ic_done_black_16dp_2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\ic_done_black_32dp_2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\ic_info_outline_black_18dp_2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\ic_warning_black_36dp_2x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

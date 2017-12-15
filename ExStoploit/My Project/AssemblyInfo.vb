@@ -12,10 +12,10 @@ Imports System.Windows
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("ExStoploit")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyDescription("ExStoploit - A simple utility that helps you check Windows USB Storage History.")> 
+<Assembly: AssemblyCompany("Elepover")> 
 <Assembly: AssemblyProduct("ExStoploit")> 
-<Assembly: AssemblyCopyright("Copyright ©  2017")> 
+<Assembly: AssemblyCopyright("Copyright © 2017 Elepover.")> 
 <Assembly: AssemblyTrademark("")> 
 <Assembly: ComVisible(false)>
 
