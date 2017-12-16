@@ -7,7 +7,9 @@
     
     Title="ExStoploit"
     Height="350"
+    MinHeight="350"
     Width="525"
+    MinWidth="525"
 
     BorderBrush="{DynamicResource AccentColorBrush}"
     BorderThickness="1.5"
@@ -25,42 +27,51 @@
                 <!-- Should be invisible at first. -->
                 <Grid x:Name="Grid_Summary" Height="233" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200">
                     <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Administrators' Privilege" FontSize="14" VerticalAlignment="Top"/>
-                    <TextBlock x:Name="TextBlock_Permissions" HorizontalAlignment="Left" Margin="31,28,0,0" TextWrapping="Wrap" Text="Granted" Foreground="Green" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="TextBlock_Permissions" HorizontalAlignment="Left" Margin="31,28,0,0" TextWrapping="Wrap" Text="Granted" Foreground="Green" VerticalAlignment="Top" ToolTip="Some features require elevated privileges to run.&#x0a;You could always specify '-p' in commandline arguments to bypass the permission check."/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,48,0,0" TextWrapping="Wrap" Text="Registry Keys Found" FontSize="14" VerticalAlignment="Top"/>
-                    <TextBlock x:Name="TextBlock_FoundEntries" HorizontalAlignment="Left" Margin="31,66,0,0" TextWrapping="Wrap" Text="None" Foreground="Green" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="TextBlock_FoundEntries" HorizontalAlignment="Left" Margin="31,66,0,0" TextWrapping="Wrap" Text="None" Foreground="Green" VerticalAlignment="Top" ToolTip="Detected registry keys."/>
                     <Image x:Name="Canvas_FoundEntries" HorizontalAlignment="Left" Height="18" Margin="10,66,0,0" VerticalAlignment="Top" Width="18"/>
                     <Image x:Name="Canvas_Permissions" HorizontalAlignment="Left" Height="16" Margin="10,28,0,0" VerticalAlignment="Top" Width="16"/>
                 </Grid>
-                <Button x:Name="Button_Reload" Content="Reload" Margin="0,0,10,10" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="90" FontSize="13" Style="{StaticResource AccentedSquareButtonStyle}"/>
+                <Button x:Name="Button_Reload" Content="Reload" Margin="0,0,10,10" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="90" FontSize="13" Style="{StaticResource AccentedSquareButtonStyle}" ToolTip="Reload all stuff."/>
                 <Image x:Name="Image_Reloaded" Margin="0,0,105,10" HorizontalAlignment="Right" Width="30" Height="30" VerticalAlignment="Bottom"/>
             </Grid>
         </TabItem>
         <TabItem x:Name="TabItem_List" Header="LIST" >
             <Grid>
                 <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Select source registry entry: " VerticalAlignment="Top" FontSize="14"/>
-                <ComboBox x:Name="ComboBox_SourceRegistry" Margin="10,30,114,0" VerticalAlignment="Top">
+                <ComboBox x:Name="ComboBox_SourceRegistry" Margin="10,30,114,0" VerticalAlignment="Top" ToolTip="Choose one source registry.">
                     <ComboBoxItem x:Name="ComboBoxItem_CurrentControlSet">HKLM\SYSTEM\CurrentControlSet\Enum\SWD\WPDBUSENUM</ComboBoxItem>
                     <ComboBoxItem x:Name="ComboBoxItem_ControlSet001">HKLM\SYSTEM\ControlSet001\Enum\SWD\WPDBUSENUM</ComboBoxItem>
                     <ComboBoxItem x:Name="ComboBoxItem_ControlSet002">HKLM\SYSTEM\ControlSet002\Enum\SWD\WPDBUSENUM</ComboBoxItem>
                     <ComboBoxItem x:Name="ComboBoxItem_WPD">HKLM\SOFTWARE\Microsoft\Windows Portable Devices\Devices</ComboBoxItem>
                 </ComboBox>
                 <TextBlock HorizontalAlignment="Left" Margin="10,61,0,0" TextWrapping="Wrap" Text="Select a device to view details: " VerticalAlignment="Top" FontSize="14"/>
-                <ComboBox x:Name="ComboBox_DetectedDrives" Margin="10,79,114,0" VerticalAlignment="Top"/>
+                <ComboBox x:Name="ComboBox_DetectedDrives" Margin="10,79,114,0" VerticalAlignment="Top" ToolTip="Select a detected drive."/>
                 <Controls:ProgressRing x:Name="ProgressRing_List_LoadIndicator" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="18" Height="18"/>
-                <Image x:Name="Image_List_Status" Margin="0,0,10,10" HorizontalAlignment="Right" Width="32" Height="32" VerticalAlignment="Bottom"/>
-                <TextBox x:Name="TextBox_Result" Margin="10,110,114,10" TextWrapping="Wrap" Text="Idle." ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible" IsReadOnly="True" FontFamily="Consolas"/>
+                <Image x:Name="Image_List_Status" Margin="0,0,10,42" HorizontalAlignment="Right" Width="32" Height="32" VerticalAlignment="Bottom"/>
+                <TextBox x:Name="TextBox_Result" Margin="10,110,114,10" TextWrapping="Wrap" Text="Idle." ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible" IsReadOnly="True" FontFamily="Consolas" ToolTip="Device details."/>
+                <Button x:Name="Button_Export" Content="Export" Margin="0,0,10,10" Height="27" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" ToolTip="Export to clipboard."/>
 
 
             </Grid>
         </TabItem>
         <TabItem x:Name="TabItem_Actions" Header="ACTIONS">
             <Grid>
-
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Delete these following registry entries: " VerticalAlignment="Top" FontSize="14"/>
+                <CheckBox x:Name="CheckBox_CurrentControlSet" Content="HKLM\SYSTEM\CurrentControlSet\Enum\SWD\WPDBUSENUM\*" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="CheckBox_ControlSet001" Content="HKLM\SYSTEM\ControlSet001\Enum\SWD\WPDBUSENUM\*" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="CheckBox_ControlSet002" Content="HKLM\SYSTEM\ControlSet002\Enum\SWD\WPDBUSENUM\*" HorizontalAlignment="Left" Margin="10,79,0,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="CheckBox_WPDENUM" Content="HKLM\SOFTWARE\Microsoft\Windows Portable Devices\Devices\*" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="Button_Delete" Content="DELETE SELECTED" Margin="10,0,10,10" FontSize="16" Height="41" VerticalAlignment="Bottom"/>
+                <Controls:ToggleSwitch x:Name="CheckBox_AcceptDeletion" Header="I ACCEPT THE RISKS OF MODIFYING THE WINDOWS REGISTRY" Margin="10,0,10,56" VerticalAlignment="Bottom" OnLabel="YES" OffLabel="NO" OnSwitchBrush="Red"/>
+                <Image x:Name="Image_Actions_Status" Height="32" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="32"/>
+                <Controls:ProgressRing x:Name="ProgressRing_Delete" HorizontalAlignment="Right" Margin="0,0,20,18" VerticalAlignment="Bottom" Height="25" Width="25"/>
             </Grid>
         </TabItem>
         <TabItem x:Name="TabItem_About" Header="ABOUT">
             <Grid>
-
+                <TextBox x:Name="TextBox_Copyright" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible" IsReadOnly="True"/>
             </Grid>
         </TabItem>
     </Controls:MetroAnimatedTabControl>
