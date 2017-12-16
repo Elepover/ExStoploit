@@ -209,18 +209,22 @@ JumpOut:
             Dim Skey3 As RegistryKey = Bkey.OpenSubKey("SYSTEM\CurrentControlSet\Enum\SWD\WPDBUSENUM", False)
             Dim Skey4 As RegistryKey = Bkey.OpenSubKey("SOFTWARE\Microsoft\Windows Portable Devices\Devices", False)
 
-            For Each SkeyName1 As String In Skey1.GetSubKeyNames()
-                RegEntriesFound += 1
-            Next
-            For Each SkeyName2 As String In Skey2.GetSubKeyNames()
-                RegEntriesFound += 1
-            Next
-            For Each SkeyName3 As String In Skey3.GetSubKeyNames()
-                RegEntriesFound += 1
-            Next
-            For Each SkeyName4 As String In Skey4.GetSubKeyNames()
-                RegEntriesFound += 1
-            Next
+            Try
+                For Each SkeyName1 As String In Skey1.GetSubKeyNames()
+                    RegEntriesFound += 1
+                Next
+                For Each SkeyName2 As String In Skey2.GetSubKeyNames()
+                    RegEntriesFound += 1
+                Next
+                For Each SkeyName3 As String In Skey3.GetSubKeyNames()
+                    RegEntriesFound += 1
+                Next
+                For Each SkeyName4 As String In Skey4.GetSubKeyNames()
+                    RegEntriesFound += 1
+                Next
+            Catch ex As Exception
+            End Try
+
 
             'Proceed control changes.
             TextBlock_Status.Text = "Processing control changes..."
@@ -288,10 +292,14 @@ JumpOut:
                 SelectedRegistry = "SOFTWARE\Microsoft\Windows Portable Devices\Devices"
         End Select
 
-        Dim Items() As String = Skey.GetSubKeyNames()
-        For Each s As String In Items
-            ComboBox_DetectedDrives.Items.Add(New ComboBoxItem With {.Content = s})
-        Next
+        Try
+            Dim Items() As String = Skey.GetSubKeyNames()
+            For Each s As String In Items
+                ComboBox_DetectedDrives.Items.Add(New ComboBoxItem With {.Content = s})
+            Next
+        Catch ex As Exception
+            Image_List_Status.Source = ConvertToImageSource(My.Resources.ic_warning_black_36dp_2x, 32, 32)
+        End Try
         ProgressRing_List_LoadIndicator.Visibility = Windows.Visibility.Hidden
     End Sub
 
