@@ -14,7 +14,7 @@
     BorderBrush="{DynamicResource AccentColorBrush}"
     BorderThickness="1.5"
     GlowBrush="{DynamicResource AccentColorBrush}"
-    WindowStartupLocation="CenterScreen"
+    WindowStartupLocation="CenterScreen" Icon="icon.ico"
                       >
     <Controls:MetroAnimatedTabControl>
         <TabItem x:Name="TabItem_Status" Header="STATUS">
